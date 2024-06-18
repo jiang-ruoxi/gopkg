@@ -1,4 +1,4 @@
-module gopkg
+module github.com/jiang-ruoxi/gopkg
 
 go 1.21.9
 
