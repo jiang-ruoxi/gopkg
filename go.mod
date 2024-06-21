@@ -1,6 +1,6 @@
 module github.com/jiang-ruoxi/gopkg
 
-go 1.21.9
+go 1.19
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
