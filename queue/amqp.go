@@ -13,7 +13,7 @@ type Config struct {
 	Addresses string `json:"addresses" mapstructure:"addresses"`   // 服务地址集合
 	Username  string `json:"username" mapstructure:"username"`     // 用户名
 	Password  string `json:"password" mapstructure:"password"`     // 密码
-	QueueName string `json:"queue_name" mapstructure:"queue_name"` //队列名
+	QueueName string `json:"queue-name" mapstructure:"queue-name"` //队列名
 }
 
 type ClientManager struct {
