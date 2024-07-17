@@ -16,32 +16,34 @@ type Config struct {
 	DB       int      `json:"db" mapstructure:"db"`
 }
 
-func InitFromViper() {
+func InitFromViper() error {
 	defaultName = viper.GetString("redis.default")
 	var cfg map[string]Config
 	err := viper.UnmarshalKey("redis.clients", &cfg)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	clients = make(map[string]redis.UniversalClient)
 	for k := range cfg {
 		if clients[k], err = NewClient(cfg[k]); err != nil {
-			panic(err)
+			return err
 		}
 	}
+	return nil
 }
 
-func InitFromViperDefault() {
+func InitFromViperDefault() error {
 	defaultName = viper.GetString("redis.default")
 	var cfg map[string]Config
 	err := viper.UnmarshalKey("redis.clients", &cfg)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	clientDefault = make(map[string]*redis.Client)
 	for k := range cfg {
 		if clientDefault[k], err = NewClientDefault(cfg[k]); err != nil {
-			panic(err)
+			return err
 		}
 	}
+	return nil
 }

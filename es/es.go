@@ -15,22 +15,23 @@ type Config struct {
 }
 
 // Initialize 根据配置文件加载ES实例
-func Initialize() {
+func Initialize() error {
 	// 解析ES配置
 	var cfgMap map[string]Config
 	if err := viper.UnmarshalKey("elasticsearch", &cfgMap); err != nil {
-		panic(err)
+		return err
 	}
 	// 数据库客户端链接添加到ClientManager
 	for name, cfg := range cfgMap {
 		// 实例化数据库链接组
 		client, err := NewClient(cfg)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		// 添加到GroupManager
 		clientManager.Add(name, client)
 	}
+	return nil
 }
 
 // ClientManager 管理数据库客户端Client

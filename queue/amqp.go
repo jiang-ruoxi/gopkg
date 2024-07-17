@@ -47,22 +47,23 @@ type RabbitMQ struct {
 	queue   amqp.Queue
 }
 
-func Initialize() {
+func Initialize() error {
 	// 解析ES配置
 	var cfgMap map[string]Config
 	if err := viper.UnmarshalKey("rabbitmq", &cfgMap); err != nil {
-		panic(err)
+		return err
 	}
 	// 数据库客户端链接添加到ClientManager
 	for name, cfg := range cfgMap {
 		// 实例化数据库链接组
 		client, err := NewClient(cfg)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		// 添加到GroupManager
 		clientManager.Add(name, client)
 	}
+	return nil
 }
 
 func failOnError(err error, msg string) {

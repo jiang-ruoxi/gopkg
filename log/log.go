@@ -64,11 +64,11 @@ func init() {
 	logger, _ = zap.NewDevelopment()
 }
 
-func InitFromViper() {
+func InitFromViper() error {
 
 	// 默认配置
 	if err := viper.UnmarshalKey("log", &config); err != nil {
-		panic(err)
+		return err
 	}
 
 	// 日志最大体积
@@ -175,7 +175,7 @@ func InitFromViper() {
 
 	// 创建日志实例
 	logger = zap.New(zapcore.NewTee(cores...), options...)
-
+	return nil
 }
 
 // Logger 返回zap.Logger对象
