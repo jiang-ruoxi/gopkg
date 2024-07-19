@@ -10,6 +10,7 @@ require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/google/uuid v1.6.0
+	github.com/robfig/cron/v3 v3.0.0
 	github.com/spf13/viper v1.19.0
 	github.com/streadway/amqp v1.1.0
 	go.uber.org/zap v1.27.0
@@ -45,7 +46,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
-	github.com/robfig/cron/v3 v3.0.0 // indirect
 	github.com/sagikazarmark/locafero v0.4.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
