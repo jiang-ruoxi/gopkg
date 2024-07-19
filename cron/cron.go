@@ -6,17 +6,18 @@ import (
 )
 
 var c *cron.Cron
+var cronOption cron.Option
 
 type Cron interface {
 	Spec() string
 	Run()
 }
 
-func InitFromViper(cronList []Cron) error {
+func InitFromViper(cronList []Cron, options []cron.Option) error {
 	if !viper.GetBool("cron.switch") {
 		return nil
 	}
-	c = cron.New()
+	c = cron.New(options...)
 	for _, task := range cronList {
 		if _, err := c.AddFunc(task.Spec(), task.Run); err != nil {
 			return err
@@ -24,4 +25,8 @@ func InitFromViper(cronList []Cron) error {
 	}
 	c.Start()
 	return nil
+}
+
+func InitOption() cron.Option {
+	return cronOption
 }
