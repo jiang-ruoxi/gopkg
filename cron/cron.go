@@ -13,6 +13,10 @@ type Cron interface {
 	Run()
 }
 
+func InitOption() cron.Option {
+	return cronOption
+}
+
 func InitFromViper(cronList []Cron, options []cron.Option) error {
 	if !viper.GetBool("cron.switch") {
 		return nil
@@ -25,8 +29,4 @@ func InitFromViper(cronList []Cron, options []cron.Option) error {
 	}
 	c.Start()
 	return nil
-}
-
-func InitOption() cron.Option {
-	return cronOption
 }

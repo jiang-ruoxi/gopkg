@@ -10,8 +10,8 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	"github.com/jiang-ruoxi/gopkg/server/middleware"
-	"github.com/jiang-ruoxi/gopkg/utils"
+	"github.com/jiangrx816/gopkg/server/middleware"
+	"github.com/jiangrx816/gopkg/utils"
 	"github.com/spf13/viper"
 )
 
